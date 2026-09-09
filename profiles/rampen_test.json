@@ -1,0 +1,24 @@
+{
+  "name": "Rampentest",
+  "steps": [
+    {
+      "name": "Einrollen",
+      "type": "steady",
+      "duration": 10,
+      "watts": 80
+    },
+    {
+      "name": "Rampe auf 140",
+      "type": "ramp",
+      "duration": 30,
+      "start_watts": 80,
+      "end_watts": 140
+    },
+    {
+      "name": "Erholung",
+      "type": "steady",
+      "duration": 10,
+      "watts": 80
+    }
+  ]
+}

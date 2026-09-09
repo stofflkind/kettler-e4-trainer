@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1"
+    >
+
+    <title>Kettler E4 Trainer</title>
+
+    <link
+        rel="stylesheet"
+        href="/static/style.css"
+    >
+</head>
+
+<body>
+
+<div class="container">
+
+    <header>
+        <h1>Kettler E4 Trainer</h1>
+    </header>
+
+    <section class="controls">
+
+        <select id="profile">
+
+            {% for profile in profiles %}
+            <option value="{{ profile }}">
+                {{ profile }}
+            </option>
+            {% endfor %}
+
+        </select>
+
+        <button
+            id="startButton"
+            class="start"
+        >
+            Training starten
+        </button>
+
+        <button
+            id="stopButton"
+            class="stop"
+        >
+            Stop
+        </button>
+
+    </section>
+
+    <section class="status">
+
+        <div class="card main">
+            <span class="label">
+                Leistung
+            </span>
+
+            <span
+                class="value"
+                id="actualWatt"
+            >
+                0
+            </span>
+
+            <span class="unit">
+                W
+            </span>
+        </div>
+
+        <div class="card">
+            <span class="label">
+                Soll
+            </span>
+
+            <span
+                class="value"
+                id="targetWatt"
+            >
+                0
+            </span>
+
+            <span class="unit">
+                W
+            </span>
+        </div>
+
+        <div class="card">
+            <span class="label">
+                Puls
+            </span>
+
+            <span
+                class="value"
+                id="heartRate"
+            >
+                ---
+            </span>
+
+            <span class="unit">
+                bpm
+            </span>
+        </div>
+
+        <div class="card">
+            <span class="label">
+                Kadenz
+            </span>
+
+            <span
+                class="value"
+                id="rpm"
+            >
+                0
+            </span>
+
+            <span class="unit">
+                rpm
+            </span>
+        </div>
+
+    </section>
+
+    <section class="info">
+
+        <div>
+            <strong>Profil:</strong>
+            <span id="profileName">
+                -
+            </span>
+        </div>
+
+        <div>
+            <strong>Abschnitt:</strong>
+            <span id="stepName">
+                -
+            </span>
+        </div>
+
+        <div>
+            <strong>Zeit:</strong>
+            <span id="elapsed">
+                00:00
+            </span>
+        </div>
+
+        <div>
+            <strong>Rest Abschnitt:</strong>
+            <span id="remaining">
+                00:00
+            </span>
+        </div>
+
+        <div>
+            <strong>Geschwindigkeit:</strong>
+            <span id="speed">
+                0.0
+            </span>
+            km/h
+        </div>
+
+        <div>
+            <strong>Distanz:</strong>
+            <span id="distance">
+                0.0
+            </span>
+            km
+        </div>
+
+        <div>
+            <strong>Energie:</strong>
+            <span id="energy">
+                0
+            </span>
+            kJ
+        </div>
+
+    </section>
+
+    <div
+        id="error"
+        class="error"
+    ></div>
+
+</div>
+
+<script src="/static/app.js"></script>
+
+</body>
+</html>

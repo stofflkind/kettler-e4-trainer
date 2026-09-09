@@ -1,0 +1,10 @@
+{
+  "name": "Technischer Funktionstest",
+  "steps": [
+    {"duration": 10, "watts": 80},
+    {"duration": 10, "watts": 100},
+    {"duration": 10, "watts": 120},
+    {"duration": 10, "watts": 100},
+    {"duration": 10, "watts": 80}
+  ]
+}

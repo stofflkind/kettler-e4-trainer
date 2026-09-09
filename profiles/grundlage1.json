@@ -1,0 +1,43 @@
+{
+  "name": "Grundlagentraining 1",
+  "steps": [
+    {
+      "name": "Aufwärmen",
+      "type": "steady",
+      "duration": 300,
+      "watts": 80
+    },
+    {
+      "name": "Steigerung",
+      "type": "ramp",
+      "duration": 300,
+      "start_watts": 80,
+      "end_watts": 120
+    },
+    {
+      "name": "Grundlage",
+      "type": "steady",
+      "duration": 600,
+      "watts": 120
+    },
+    {
+      "name": "Belastung",
+      "type": "steady",
+      "duration": 180,
+      "watts": 140
+    },
+    {
+      "name": "Erholung",
+      "type": "steady",
+      "duration": 300,
+      "watts": 90
+    },
+    {
+      "name": "Ausfahren",
+      "type": "ramp",
+      "duration": 300,
+      "start_watts": 90,
+      "end_watts": 60
+    }
+  ]
+}

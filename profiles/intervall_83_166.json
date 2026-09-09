@@ -1,0 +1,161 @@
+{
+  "name": "Intervalltraining 83-166",
+  "steps": [
+    {
+      "name": "Aufwärmen",
+      "type": "steady",
+      "duration": 240,
+      "watts": 66
+    },
+
+    {
+      "name": "Intervall 1 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 1 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 2 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 2 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 3 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 3 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 4 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 4 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 5 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 5 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 6 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 6 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 7 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 7 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 8 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 8 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 9 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 9 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 10 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 10 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Intervall 11 - locker",
+      "type": "steady",
+      "duration": 60,
+      "watts": 83
+    },
+    {
+      "name": "Intervall 11 - Belastung",
+      "type": "steady",
+      "duration": 30,
+      "watts": 166
+    },
+
+    {
+      "name": "Ausrollen",
+      "type": "steady",
+      "duration": 240,
+      "watts": 66
+    }
+  ]
+}

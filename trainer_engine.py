@@ -383,6 +383,12 @@ class TrainerEngine:
             "step": None,
             "step_name": None,
             "step_type": None,
+            "step_duration": 0,
+            "step_elapsed": 0,
+            "step_remaining": 0,
+            "next_step_name": None,
+            "next_target_watt": None,
+            "next_step_duration": 0,
             "elapsed": 0,
             "remaining": total_duration,
             "total_duration": total_duration,
@@ -441,6 +447,24 @@ class TrainerEngine:
                     duration = int(step["duration"])
                     step_name = step["name"]
                     step_type = step["type"]
+
+                    next_step = (
+                        profile["steps"][step_number]
+                        if step_number < len(profile["steps"])
+                        else None
+                    )
+                    next_step_name = (
+                        next_step["name"] if next_step is not None else None
+                    )
+                    if next_step is None:
+                        next_target_watt = None
+                        next_step_duration = 0
+                    elif next_step["type"] == "steady":
+                        next_target_watt = int(next_step["watts"])
+                        next_step_duration = int(next_step["duration"])
+                    else:
+                        next_target_watt = int(next_step["start_watts"])
+                        next_step_duration = int(next_step["duration"])
 
                     planned_step_start = sum(
                         int(s["duration"])
@@ -541,6 +565,14 @@ class TrainerEngine:
                             "step": step_number,
                             "step_name": step_name,
                             "step_type": step_type,
+                            "step_duration": duration,
+                            "step_elapsed": min(duration, int(step_elapsed)),
+                            "step_remaining": max(
+                                0, duration - int(step_elapsed)
+                            ),
+                            "next_step_name": next_step_name,
+                            "next_target_watt": next_target_watt,
+                            "next_step_duration": next_step_duration,
                             "elapsed": int(elapsed),
                             "remaining": int(remaining_total),
                             "total_duration": total_duration,

@@ -38,6 +38,12 @@ state = {
     "step": None,
     "step_name": None,
     "step_type": None,
+    "step_duration": 0,
+    "step_elapsed": 0,
+    "step_remaining": 0,
+    "next_step_name": None,
+    "next_target_watt": None,
+    "next_step_duration": 0,
     "elapsed": 0,
     "remaining": 0,
     "total_duration": 0,
@@ -77,17 +83,44 @@ def format_profile_filename(name):
 
     return path
 
-
 def run_training(profile_path):
     global trainer_engine
 
     try:
         result = trainer_engine.run(profile_path)
 
+        with state_lock:
+            final_total_duration = state["total_duration"]
+            final_elapsed = state["elapsed"]
+            final_step_duration = state["step_duration"]
+            final_step_elapsed = state["step_elapsed"]
+            final_step_remaining = state["step_remaining"]
+            final_remaining = state["remaining"]
+
         update_state({
             "running": False,
             "completed": result["completed"],
-            "remaining": 0 if result["completed"] else state["remaining"],
+            "elapsed": (
+                final_total_duration
+                if result["completed"]
+                else final_elapsed
+            ),
+            "remaining": (
+                0
+                if result["completed"]
+                else final_remaining
+            ),
+            "total_duration": final_total_duration,
+            "step_elapsed": (
+                final_step_duration
+                if result["completed"]
+                else final_step_elapsed
+            ),
+            "step_remaining": (
+                0
+                if result["completed"]
+                else final_step_remaining
+            ),
             "log": result["log"],
         })
 
@@ -100,7 +133,6 @@ def run_training(profile_path):
 
     finally:
         trainer_engine = None
-
 
 @app.get("/", response_class=HTMLResponse)
 def index(request: Request):
@@ -147,6 +179,12 @@ def api_start(data: StartRequest):
         "step": None,
         "step_name": None,
         "step_type": None,
+        "step_duration": 0,
+        "step_elapsed": 0,
+        "step_remaining": 0,
+        "next_step_name": None,
+        "next_target_watt": None,
+        "next_step_duration": 0,
         "elapsed": 0,
         "remaining": 0,
         "total_duration": 0,

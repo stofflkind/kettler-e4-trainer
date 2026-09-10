@@ -2,188 +2,181 @@
 <html lang="de">
 <head>
     <meta charset="UTF-8">
-
     <meta
         name="viewport"
         content="width=device-width, initial-scale=1"
     >
-
     <title>Kettler E4 Trainer</title>
-
-    <link
-        rel="stylesheet"
-        href="/static/style.css"
-    >
+    <link rel="stylesheet" href="/static/style.css">
 </head>
 
 <body>
 
 <div class="container">
 
-    <header>
-        <h1>Kettler E4 Trainer</h1>
+    <header class="topbar">
+        <div>
+            <h1>Kettler E4 Trainer</h1>
+            <div class="subtitle">Live-Trainingskonsole</div>
+        </div>
+
+        <div id="trainingBadge" class="training-badge idle">
+            Bereit
+        </div>
     </header>
 
     <section class="controls">
-
-        <select id="profile">
-
+        <select id="profile" aria-label="Trainingsprofil">
             {% for profile in profiles %}
             <option value="{{ profile }}">
                 {{ profile }}
             </option>
             {% endfor %}
-
         </select>
 
-        <button
-            id="startButton"
-            class="start"
-        >
+        <button id="startButton" class="start">
             Training starten
         </button>
 
-        <button
-            id="stopButton"
-            class="stop"
-        >
+        <button id="stopButton" class="stop">
             Stop
         </button>
-
     </section>
 
-    <section class="status">
+    <section class="hero">
+        <div class="hero-label">Ist-Leistung</div>
 
-        <div class="card main">
-            <span class="label">
-                Leistung
-            </span>
-
-            <span
-                class="value"
-                id="actualWatt"
-            >
-                0
-            </span>
-
-            <span class="unit">
-                W
-            </span>
+        <div class="hero-value">
+            <span id="actualWatt">0</span>
+            <span class="hero-unit">W</span>
         </div>
 
-        <div class="card">
-            <span class="label">
-                Soll
-            </span>
+        <div class="hero-target">
+            Soll:
+            <strong>
+                <span id="targetWatt">0</span> W
+            </strong>
+        </div>
+    </section>
 
-            <span
-                class="value"
-                id="targetWatt"
-            >
-                0
-            </span>
+    <section class="metrics">
 
-            <span class="unit">
-                W
-            </span>
+        <div class="metric-card">
+            <span class="metric-label">Puls</span>
+            <div class="metric-value">
+                <span id="heartRate">---</span>
+                <span class="metric-unit">bpm</span>
+            </div>
         </div>
 
-        <div class="card">
-            <span class="label">
-                Puls
-            </span>
-
-            <span
-                class="value"
-                id="heartRate"
-            >
-                ---
-            </span>
-
-            <span class="unit">
-                bpm
-            </span>
+        <div class="metric-card">
+            <span class="metric-label">Kadenz</span>
+            <div class="metric-value">
+                <span id="rpm">0</span>
+                <span class="metric-unit">rpm</span>
+            </div>
         </div>
 
-        <div class="card">
-            <span class="label">
-                Kadenz
-            </span>
-
-            <span
-                class="value"
-                id="rpm"
-            >
-                0
-            </span>
-
-            <span class="unit">
-                rpm
-            </span>
+        <div class="metric-card">
+            <span class="metric-label">Geschwindigkeit</span>
+            <div class="metric-value">
+                <span id="speed">0.0</span>
+                <span class="metric-unit">km/h</span>
+            </div>
         </div>
 
     </section>
 
-    <section class="info">
+    <section class="training-panel">
 
-        <div>
-            <strong>Profil:</strong>
-            <span id="profileName">
-                -
-            </span>
+        <div class="panel-heading">
+            <div>
+                <span class="section-label">Aktueller Abschnitt</span>
+                <h2 id="stepName">Noch kein Training</h2>
+            </div>
+
+            <div class="step-time">
+                noch
+                <strong id="stepRemaining">00:00</strong>
+            </div>
         </div>
 
-        <div>
-            <strong>Abschnitt:</strong>
-            <span id="stepName">
-                -
-            </span>
+        <div class="progress-track">
+            <div
+                id="stepProgress"
+                class="progress-fill step-progress"
+            ></div>
         </div>
 
-        <div>
-            <strong>Zeit:</strong>
-            <span id="elapsed">
-                00:00
-            </span>
+        <div class="progress-meta">
+            <span id="stepElapsed">00:00</span>
+            <span id="stepDuration">00:00</span>
         </div>
 
-        <div>
-            <strong>Rest Abschnitt:</strong>
-            <span id="remaining">
-                00:00
-            </span>
-        </div>
+        <div class="next-step">
+            <span class="section-label">Als Nächstes</span>
 
-        <div>
-            <strong>Geschwindigkeit:</strong>
-            <span id="speed">
-                0.0
-            </span>
-            km/h
-        </div>
-
-        <div>
-            <strong>Distanz:</strong>
-            <span id="distance">
-                0.0
-            </span>
-            km
-        </div>
-
-        <div>
-            <strong>Energie:</strong>
-            <span id="energy">
-                0
-            </span>
-            kJ
+            <div class="next-step-content">
+                <strong id="nextStepName">–</strong>
+                <span id="nextStepDetails">–</span>
+            </div>
         </div>
 
     </section>
 
-    <div
-        id="error"
-        class="error"
-    ></div>
+    <section class="training-panel overall-panel">
+
+        <div class="panel-heading compact">
+            <div>
+                <span class="section-label">Gesamttraining</span>
+                <strong id="profileName">–</strong>
+            </div>
+
+            <div class="overall-time">
+                <strong id="elapsed">00:00</strong>
+                <span>/</span>
+                <span id="totalDuration">00:00</span>
+            </div>
+        </div>
+
+        <div class="progress-track">
+            <div
+                id="overallProgress"
+                class="progress-fill overall-progress"
+            ></div>
+        </div>
+
+        <div class="progress-meta">
+            <span>verstrichen</span>
+            <span>
+                Rest:
+                <strong id="remaining">00:00</strong>
+            </span>
+        </div>
+
+    </section>
+
+    <section class="secondary">
+
+        <div class="secondary-item">
+            <span class="secondary-label">Distanz</span>
+            <div>
+                <strong id="distance">0.0</strong>
+                <span>km</span>
+            </div>
+        </div>
+
+        <div class="secondary-item">
+            <span class="secondary-label">Energie</span>
+            <div>
+                <strong id="energy">0</strong>
+                <span>kJ</span>
+            </div>
+        </div>
+
+    </section>
+
+    <div id="error" class="error"></div>
 
 </div>
 

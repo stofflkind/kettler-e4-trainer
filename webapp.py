@@ -1,3 +1,4 @@
+import json
 from pathlib import Path
 import threading
 
@@ -152,6 +153,55 @@ def index(request: Request):
 def api_status():
     with state_lock:
         return dict(state)
+
+@app.get("/api/profile/{profile_name}")
+def api_profile(profile_name: str):
+    try:
+        profile_path = format_profile_filename(profile_name)
+    except Exception:
+        raise HTTPException(
+            status_code=404,
+            detail="Profil nicht gefunden.",
+        )
+
+    with open(profile_path, "r", encoding="utf-8") as f:
+        profile = json.load(f)
+
+    steps = []
+    current_time = 0
+
+    for step in profile["steps"]:
+        duration = int(step["duration"])
+        step_type = step["type"]
+
+        if step_type == "steady":
+            start_watt = int(step["watts"])
+            end_watt = start_watt
+
+        elif step_type == "ramp":
+            start_watt = int(step["start_watts"])
+            end_watt = int(step["end_watts"])
+
+        else:
+            continue
+
+        steps.append({
+            "name": step["name"],
+            "type": step_type,
+            "duration": duration,
+            "start_watt": start_watt,
+            "end_watt": end_watt,
+            "start_time": current_time,
+            "end_time": current_time + duration,
+        })
+
+        current_time += duration
+
+    return {
+        "name": profile["name"],
+        "total_duration": current_time,
+        "steps": steps,
+    }
 
 
 @app.post("/api/start")

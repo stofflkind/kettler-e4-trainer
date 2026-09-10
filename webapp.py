@@ -199,6 +199,7 @@ def api_profile(profile_name: str):
 
     return {
         "name": profile["name"],
+        "heart_rate": profile.get("heart_rate"),
         "total_duration": current_time,
         "steps": steps,
     }

@@ -469,3 +469,9 @@ select:disabled {
     stroke-dasharray: 6 5;
     pointer-events: none;
 }
+
+/* Herzfrequenz-Warnung */
+
+.heart-rate-high {
+    color: #ff4d4d !important;
+}

@@ -1,3 +1,6 @@
+let profileHeartRate = null;
+
+
 function formatTime(seconds) {
     seconds = Math.max(0, Math.floor(Number(seconds) || 0));
 
@@ -92,6 +95,8 @@ async function loadProfileChart(profileName) {
     }
 
     const profile = await response.json();
+
+    profileHeartRate = profile.heart_rate ?? null;
 
     drawProfileChart(profile);
 }
@@ -456,10 +461,60 @@ async function updateStatus() {
         ).textContent =
             data.target_watt ?? 0;
 
-        document.getElementById(
-            "heartRate"
-        ).textContent =
-            data.heart_rate ?? "---";
+        const heartRateElement =
+            document.getElementById(
+                "heartRate"
+            );
+
+        const heartRate =
+            data.heart_rate == null
+            ? null
+            : Number(data.heart_rate);
+
+        heartRateElement.classList.remove(
+            "heart-rate-high"
+        );
+
+        if (
+            heartRate == null
+            || !Number.isFinite(heartRate)
+        ) {
+            heartRateElement.textContent = "---";
+
+        } else if (
+            !profileHeartRate
+            || profileHeartRate.min == null
+            || profileHeartRate.max == null
+        ) {
+            heartRateElement.textContent =
+                `${heartRate}`;
+
+        } else {
+            const minHeartRate =
+                Number(profileHeartRate.min);
+
+            const maxHeartRate =
+                Number(profileHeartRate.max);
+
+            let indicator = "✓";
+
+            if (heartRate < minHeartRate) {
+                indicator = "↓";
+            } else if (heartRate > maxHeartRate) {
+                indicator = "↑";
+            }
+
+            heartRateElement.textContent =
+                `${heartRate} ${indicator}`;
+
+            if (
+                heartRate > maxHeartRate * 1.10
+            ) {
+                heartRateElement.classList.add(
+                    "heart-rate-high"
+                );
+            }
+        }
 
         document.getElementById(
             "rpm"

@@ -1,5 +1,9 @@
 {
   "name": "Intervalltraining 83-166",
+  "heart_rate": {
+    "min": 112,
+    "max": 122
+  },
   "steps": [
     {
       "name": "Aufwärmen",
@@ -7,7 +11,6 @@
       "duration": 240,
       "watts": 66
     },
-
     {
       "name": "Intervall 1 - locker",
       "type": "steady",
@@ -20,7 +23,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 2 - locker",
       "type": "steady",
@@ -33,7 +35,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 3 - locker",
       "type": "steady",
@@ -46,7 +47,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 4 - locker",
       "type": "steady",
@@ -59,7 +59,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 5 - locker",
       "type": "steady",
@@ -72,7 +71,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 6 - locker",
       "type": "steady",
@@ -85,7 +83,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 7 - locker",
       "type": "steady",
@@ -98,7 +95,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 8 - locker",
       "type": "steady",
@@ -111,7 +107,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 9 - locker",
       "type": "steady",
@@ -124,7 +119,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 10 - locker",
       "type": "steady",
@@ -137,7 +131,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Intervall 11 - locker",
       "type": "steady",
@@ -150,7 +143,6 @@
       "duration": 30,
       "watts": 166
     },
-
     {
       "name": "Ausrollen",
       "type": "steady",

@@ -452,6 +452,11 @@ async function updateStatus() {
             await response.json();
 
         document.getElementById(
+            "deviceName"
+        ).textContent =
+            data.device || "Kein Gerät verbunden";
+
+        document.getElementById(
             "actualWatt"
         ).textContent =
             data.actual_watt ?? 0;

@@ -35,6 +35,7 @@ state_lock = threading.Lock()
 
 state = {
     "running": False,
+    "device": None,
     "profile": None,
     "step": None,
     "step_name": None,
@@ -226,6 +227,7 @@ def api_start(data: StartRequest):
 
     update_state({
         "running": True,
+        "device": None,
         "profile": None,
         "step": None,
         "step_name": None,

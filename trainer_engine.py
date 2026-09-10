@@ -379,6 +379,7 @@ class TrainerEngine:
 
         self._status({
             "running": True,
+            "device": None,
             "profile": profile["name"],
             "step": None,
             "step_name": None,
@@ -405,8 +406,20 @@ class TrainerEngine:
 
         try:
             kettler.connect()
-            self._message(f"Kettler: {kettler.get_id()}")
-            self._message(f"Version: {kettler.get_version()}")
+            device_id = kettler.get_id()
+            device_name = kettler.get_device_name()
+            device_version = kettler.get_version()
+
+            self._message(
+                f"Kettler: {device_name} ({device_id})"
+            )
+            self._message(
+                f"Version: {device_version}"
+            )
+
+            self._status({
+                "device": device_name,
+            })
 
             response = kettler.enter_command_mode()
             if response != "ACK":

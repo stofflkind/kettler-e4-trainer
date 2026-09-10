@@ -23,3 +23,9 @@ logs/
 *.tmp
 *.bak
 *.pre_*
+
+# Secrets / local configuration
+.env
+.env.*
+*.pem
+*.key

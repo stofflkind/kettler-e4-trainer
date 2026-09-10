@@ -92,8 +92,11 @@ python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-Install the required Python dependencies according to the dependency
-file included in the repository.
+Install the required Python dependencies:
+
+```bash
+pip install -r requirements.txt
+```
 
 ## Starting the web application
 

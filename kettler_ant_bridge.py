@@ -4,7 +4,7 @@ import time
 from openant.easy.node import Node
 from openant.easy.channel import Channel
 
-from kettler_e4 import KettlerE4
+from kettler_trainer import KettlerTrainer
 
 
 ANT_NETWORK_KEY = [
@@ -24,7 +24,7 @@ KETTLER_POLL_INTERVAL = 1.0
 
 class KettlerAntBridge:
     def __init__(self):
-        self.kettler = KettlerE4()
+        self.kettler = KettlerTrainer()
 
         self.node = None
         self.channel = None
@@ -120,7 +120,7 @@ class KettlerAntBridge:
 
     def start(self):
         print()
-        print("Kettler E4 -> ANT+ Bridge")
+        print("Kettler Trainer -> ANT+ Bridge")
         print("-------------------------")
         print(
             f"ANT+ Sensor-ID: "

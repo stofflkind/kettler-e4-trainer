@@ -9,7 +9,7 @@ from pathlib import Path
 from openant.easy.channel import Channel
 from openant.easy.node import Node
 
-from kettler_e4 import KettlerE4
+from kettler_trainer import KettlerTrainer
 
 
 DEFAULT_END_WATT = 80
@@ -358,7 +358,7 @@ class TrainerEngine:
 
     def run(self, profile_path):
         profile = load_profile(profile_path)
-        kettler = KettlerE4()
+        kettler = KettlerTrainer()
         ant = AntRadio()
 
         total_duration = sum(

@@ -1,7 +1,13 @@
 import serial
 
 
-class KettlerE4:
+DEVICE_NAMES = {
+    "SD4B3035": "Kettler E4",
+    "CTRS": "Kettler CTR1",
+}
+
+
+class KettlerTrainer:
     def __init__(self, port="/dev/kettler-e4"):
         self.port = port
         self.ser = None
@@ -24,10 +30,20 @@ class KettlerE4:
         self.ser.reset_input_buffer()
         self.ser.write((command + "\r\n").encode("ascii"))
         self.ser.flush()
-        return self.ser.readline().decode("ascii", errors="replace").strip()
+        return self.ser.readline().decode(
+            "ascii",
+            errors="replace",
+        ).strip()
 
     def get_id(self):
         return self.command("ID")
+
+    def get_device_name(self):
+        device_id = self.get_id()
+        return DEVICE_NAMES.get(
+            device_id,
+            f"Unknown Kettler device ({device_id})",
+        )
 
     def get_version(self):
         return self.command("VE")

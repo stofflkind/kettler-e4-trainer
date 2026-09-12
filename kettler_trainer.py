@@ -8,7 +8,7 @@ DEVICE_NAMES = {
 
 
 class KettlerTrainer:
-    def __init__(self, port="/dev/kettler-e4"):
+    def __init__(self, port="/dev/kettler"):
         self.port = port
         self.ser = None
 

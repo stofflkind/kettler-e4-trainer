@@ -60,6 +60,7 @@ used for the E4.
 The current setup has also been tested with:
 
 - LogiLink AU0002B USB-to-RS232 adapter (Prolific PL2303)
+- LogiLink AU0034 USB-to-RS232 adapter (FTDI FT232R)
 - Dynastream ANTUSB-m
 - Garmin ANT+ heart-rate chest strap
 - Garmin Instinct 2 Solar
@@ -192,23 +193,36 @@ pip install -r requirements.txt
 
 ## Serial device
 
-The software currently uses:
+The software uses the neutral device path:
 
 ```text
-/dev/kettler-e4
+/dev/kettler
 ```
 
 as the default serial device.
 
 A persistent udev symlink is recommended when using a USB-to-RS232
-adapter.
+adapter. This keeps the application independent of changing Linux device
+names such as `/dev/ttyUSB0` and `/dev/ttyUSB1`.
 
-The default device name is historical and does not mean that only the
-E4 is supported. The CTR1 can use the same serial device configuration.
+The LogiLink AU0034 used for testing is detected by Linux as an FTDI
+FT232R device (`0403:6001`) and works with the `ftdi_sio` kernel driver.
+
+The AU0034 has been successfully tested with both the Kettler E4 and
+Kettler CTR1.
 
 ## Starting the web application
 
-Activate the virtual environment and start FastAPI:
+The repository can be started with the helper script:
+
+```bash
+./start_web.sh
+```
+
+The script activates the virtual environment and starts Uvicorn on all
+local interfaces.
+
+Equivalent manual startup:
 
 ```bash
 source .venv/bin/activate

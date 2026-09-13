@@ -1,0 +1,39 @@
+{
+  "name": "Ruhiges Ausdauertraining 30 min",
+  "heart_rate": {
+    "min": 112,
+    "max": 122
+  },
+  "steps": [
+    {
+      "name": "Aufwärmen",
+      "type": "steady",
+      "duration": 300,
+      "watts": 65
+    },
+    {
+      "name": "Sanfter Übergang",
+      "type": "steady",
+      "duration": 300,
+      "watts": 80
+    },
+    {
+      "name": "Ausdauer",
+      "type": "steady",
+      "duration": 600,
+      "watts": 95
+    },
+    {
+      "name": "Entlastung",
+      "type": "steady",
+      "duration": 300,
+      "watts": 80
+    },
+    {
+      "name": "Ausrollen",
+      "type": "steady",
+      "duration": 300,
+      "watts": 65
+    }
+  ]
+}

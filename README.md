@@ -12,6 +12,18 @@ Testing has shown that the Kettler CTR1 cross trainer uses the same
 serial command structure and can be controlled by the same training
 engine.
 
+
+## Web interface
+
+![Kettler Trainer Web UI](docs/images/webUI.png)
+
+The browser-based cockpit displays the current training step, target and
+actual power, heart rate, cadence and other live training data.
+
+Training profiles are visualized directly in the browser and can include
+configurable heart-rate zones. The interface can also be used from a
+smartphone or tablet on the same local network.
+
 ## Features
 
 - Control of compatible Kettler fitness equipment via RS-232

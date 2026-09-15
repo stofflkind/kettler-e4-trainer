@@ -1,0 +1,45 @@
+{
+  "name": "Ausdauer Stufentest 95-110 W",
+  "heart_rate": {
+    "min": 112,
+    "max": 122
+  },
+  "steps": [
+    {
+      "name": "Aufwärmen",
+      "type": "steady",
+      "duration": 300,
+      "watts": 65
+    },
+    {
+      "name": "Sanfter Übergang",
+      "type": "steady",
+      "duration": 300,
+      "watts": 80
+    },
+    {
+      "name": "Stufe 95 W",
+      "type": "steady",
+      "duration": 300,
+      "watts": 95
+    },
+    {
+      "name": "Stufe 105 W",
+      "type": "steady",
+      "duration": 300,
+      "watts": 105
+    },
+    {
+      "name": "Stufe 110 W",
+      "type": "steady",
+      "duration": 300,
+      "watts": 110
+    },
+    {
+      "name": "Ausrollen",
+      "type": "steady",
+      "duration": 300,
+      "watts": 65
+    }
+  ]
+}
